@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Order Cancelled</title>
+  </head>
+  <body style="font-family: Arial, sans-serif;">
+    <h2>Hi <%= name %>,</h2>
+    <p>We wanted to let you know that your order has been <b>cancelled</b>.</p>
+    <p><b>Order ID:</b> <%= order._id %></p>
+    <p><b>Total Amount:</b> ₦<%= order.totalAmount %></p>
+
+    <p>If this was a mistake, you can reorder anytime from your dashboard.</p>
+    <br/>
+    <p>— The Mini Mart Team</p>
+  </body>
+</html>
