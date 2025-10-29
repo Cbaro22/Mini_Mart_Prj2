@@ -13,7 +13,7 @@ export const createProduct = async (req, res) => {
 
   try {
     const imagePath = req.file ? req.file.path : '';
-    const product = await createProductService.createProduct({ ...req.body, image: imagePath });
+    const product = await createProductService({ ...req.body, image: imagePath });
     res.status(201).json(product);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -23,7 +23,7 @@ export const createProduct = async (req, res) => {
 
 export const getProducts = async (req, res) => {
   try {
-    const products = await getAllProductsService.getProducts();
+    const products = await getAllProductsService();
     res.json(products);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -33,7 +33,7 @@ export const getProducts = async (req, res) => {
 
 export const getProductById = async (req, res) => {
   try {
-    const product = await getProductByIdService.getProductById(req.params.id);
+    const product = await getProductByIdService(req.params.id);
     if (!product) return res.status(404).json({ message: 'Product not found' });
     res.json(product);
   } catch (err) {
@@ -47,7 +47,7 @@ export const updateProduct = async (req, res) => {
     const updateData = { ...req.body };
     if (req.file) updateData.image = req.file.path;
 
-    const product = await updateProductService.updateProduct(req.params.id, updateData);
+    const product = await updateProductService(req.params.id, updateData);
     if (!product) return res.status(404).json({ message: 'Product not found' });
 
     res.json(product);
@@ -59,7 +59,7 @@ export const updateProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
   try {
-    const product = await deleteProductService.deleteProduct(req.params.id);
+    const product = await deleteProductService(req.params.id);
     if (!product) return res.status(404).json({ message: 'Product not found' });
     res.json({ message: 'Product deleted successfully' });
   } catch (err) {
