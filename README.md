@@ -140,3 +140,7 @@ DELETE	     /api/deleteCategory/:id	  Delete category
 
 ## DOCUMENTATION LINK
 https://documenter.getpostman.com/view/44317742/2sB3WmV3hR
+
+## AUTHOR
+
+Clerk Oghenekobaro
