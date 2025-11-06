@@ -40,7 +40,7 @@ export const getOrderById = async (id, user) => {
 
 
 export const updateOrderStatus = async (id, status) => {
-  const order = await Order.findById(id);
+  const order = await Order.findByIdAndUpdate(id);
   if (!order) throw new Error('Order not found');
 
   order.status = status;
@@ -50,11 +50,11 @@ export const updateOrderStatus = async (id, status) => {
 
 
 export const deleteOrder = async (id) => {
-  const order = await Order.findById(id);
+  const order = await Order.findByIdAndDelete(id);
   if (!order) throw new Error('Order not found');
 
   await order.deleteOne();
-  return { message: 'Order deleted successfully' };
+  return { message: 'Order deleted successfully', deleteOrder };
 };
 
 
