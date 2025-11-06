@@ -22,7 +22,7 @@ export const getCategoryById = async (id) => {
 
 
 export const updateCategory = async (id, data) => {
-  const category = await Category.findById(id);
+  const category = await Category.findByIdAndUpdate(id);
   if (!category) throw new Error('Category not found');
 
   Object.assign(category, data);
@@ -32,8 +32,8 @@ export const updateCategory = async (id, data) => {
 
 
 export const deleteCategory = async (id) => {
-  const category = await Category.findById(id);
+  const category = await Category.findByIdAndDelete(id);
   if (!category) throw new Error('Category not found');
   await category.deleteOne();
-  return { message: 'Category deleted successfully' };
+  return { message: 'Category deleted successfully', deleteCategory };
 };
